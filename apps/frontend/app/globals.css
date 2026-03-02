@@ -1,0 +1,70 @@
+@config "../tailwind.config.ts";
+@import "tailwindcss";
+
+:root {
+  --bg: #1b1c1d;
+  --bgSecondary: #282a2c;
+  --textColor: #ffffff;
+  --softTextColor: #a6a6a6;
+  min-height: 100%;
+}
+
+.dark {
+  --bg: #1b1c1d;
+  --bgSecondary: #282a2c;
+  --textColor: #ffffff;
+  --softTextColor: #a6a6a6;
+}
+
+.light {
+  --bg: #ffffff;
+  --bgSecondary: #f1f5f9;
+  --textColor: #111827;
+  --softTextColor: #6b7280;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--textColor);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a,
+[role='button'],
+input[type='button'],
+input[type='submit'] {
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 81, 96, 0.35);
+  border-radius: 999px;
+}

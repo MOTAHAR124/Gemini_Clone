@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: aster-ai-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build --workspace @app/backend
+    startCommand: npm run start:prod --workspace @app/backend
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: PORT
+        value: 4000
+      - key: FRONTEND_URL
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_CALLBACK_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_COLLECTION
+        value: rag_chunks
+      - key: EMBEDDING_MODEL
+        value: Xenova/all-MiniLM-L6-v2
+      - key: MAX_HISTORY_MESSAGES
+        value: 24
+      - key: MAX_CONTEXT_CHUNKS
+        value: 6
