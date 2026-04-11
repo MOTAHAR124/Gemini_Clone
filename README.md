@@ -73,3 +73,9 @@ npm run dev
 - Example prompts: `docs/EXAMPLE_PROMPTS.md`
 - Deployment guide: `docs/DEPLOYMENT.md`
 - Architecture notes: `docs/ARCHITECTURE.md`
+
+## CI/CD
+
+- GitHub Actions runs lint + build for every pull request to `main` and every push to `main`.
+- Frontend deployment should stay connected to Vercel Git integration with the project root set to `apps/frontend`.
+- Backend deployment can stay connected to Render Git auto-deploy, or you can add `RENDER_DEPLOY_HOOK_URL` as a GitHub Actions secret to trigger deploys after CI passes on `main`.

@@ -1,0 +1,3 @@
+git add .
+git commit -m "build CI/CD pipeline"
+git push

@@ -36,6 +36,13 @@ Create Vercel project with root directory: `apps/frontend`.
 
 `apps/frontend/vercel.json` is included for build/dev/install commands.
 
+### Recommended Vercel setup
+
+- Connect the GitHub repository to Vercel.
+- Keep Production Branch set to `main`.
+- Vercel will create Preview Deployments for pull requests automatically.
+- Vercel will promote a successful `main` push to production automatically.
+
 ## 3. Configure Google OAuth
 
 In Google Cloud Console OAuth app config:
@@ -46,7 +53,32 @@ In Google Cloud Console OAuth app config:
 
 Set backend env vars with matching client id/secret/callback URL.
 
-## 4. Post-Deploy Validation Checklist
+## 4. CI/CD Pipeline
+
+This repository now includes `.github/workflows/ci-cd.yml`.
+
+### What it does
+
+- On every pull request to `main`: installs dependencies, runs `pnpm lint`, and runs `pnpm build`.
+- On every push to `main`: runs the same validation checks.
+- After a successful push to `main`, it can optionally trigger a Render backend deployment if you add a deploy hook secret.
+
+### GitHub Actions requirements
+
+- No secret is required for CI validation.
+- Optional secret for backend CD:
+  - `RENDER_DEPLOY_HOOK_URL=<your render deploy hook url>`
+
+### Recommended release flow
+
+1. Push a feature branch and open a pull request.
+2. GitHub Actions validates the monorepo.
+3. Vercel creates a preview deployment for the frontend automatically.
+4. Merge into `main` after validation passes.
+5. Vercel deploys the frontend to production from `main`.
+6. Render deploys the backend either from its Git integration or through the optional deploy hook.
+
+## 5. Post-Deploy Validation Checklist
 
 - Register/login with email/password works.
 - Google OAuth login redirects back to frontend and sets session.
@@ -56,7 +88,7 @@ Set backend env vars with matching client id/secret/callback URL.
 - PDF preview and download return valid A4 PDF.
 - Image analysis returns extracted text and visual Q&A.
 
-## 5. Scaling Notes
+## 6. Scaling Notes
 
 - Add Redis for distributed rate limiting/session caching.
 - Offload PDF/image processing jobs to worker queue for heavy traffic.
