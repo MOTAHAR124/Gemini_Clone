@@ -31,6 +31,8 @@ services:
         value: gemini-2.5-flash
       - key: QDRANT_URL
         sync: false
+      - key: QDRANT_API_KEY
+        sync: false
       - key: QDRANT_COLLECTION
         value: rag_chunks
       - key: EMBEDDING_MODEL

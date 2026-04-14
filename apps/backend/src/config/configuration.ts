@@ -19,6 +19,7 @@ export default () => ({
   },
   vector: {
     qdrantUrl: process.env.QDRANT_URL ?? 'http://localhost:6333',
+    apiKey: process.env.QDRANT_API_KEY,
     collection: process.env.QDRANT_COLLECTION ?? 'rag_chunks',
   },
   rag: {

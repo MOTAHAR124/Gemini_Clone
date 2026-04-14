@@ -24,6 +24,7 @@ export class VectorService implements OnModuleInit {
   ) {
     this.client = new QdrantClient({
       url: configService.get<string>('vector.qdrantUrl'),
+      apiKey: configService.get<string>('vector.apiKey'),
     });
     this.collectionName = configService.get<string>('vector.collection', 'rag_chunks');
   }

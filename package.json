@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "concurrently \"pnpm --filter @app/backend dev\" \"pnpm --filter @app/frontend dev\"",
     "build": "pnpm --filter @app/backend build && pnpm --filter @app/frontend build",
+    "start": "pnpm --filter @app/backend start:prod",
     "lint": "pnpm --filter @app/backend lint && pnpm --filter @app/frontend lint",
     "format": "pnpm --filter @app/backend format && pnpm --filter @app/frontend format"
   },
