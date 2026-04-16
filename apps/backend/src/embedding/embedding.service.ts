@@ -1,9 +1,10 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import type { FeatureExtractionPipeline } from '@xenova/transformers';
 
 @Injectable()
 export class EmbeddingService implements OnModuleInit {
-  private extractor: any;
+  private extractor?: FeatureExtractionPipeline;
   private readonly modelName: string;
 
   constructor(private readonly configService: ConfigService) {
@@ -22,7 +23,7 @@ export class EmbeddingService implements OnModuleInit {
       normalize: true,
     });
 
-    return Array.from(output.data) as number[];
+    return Array.from(output.data as ArrayLike<number>);
   }
 
   async embedBatch(inputs: string[]): Promise<number[][]> {
@@ -38,13 +39,14 @@ export class EmbeddingService implements OnModuleInit {
     return vector.length;
   }
 
-  private async ensureExtractor() {
+  private async ensureExtractor(): Promise<FeatureExtractionPipeline> {
     if (this.extractor) {
       return this.extractor;
     }
 
     const transformers = await import('@xenova/transformers');
-    this.extractor = await transformers.pipeline('feature-extraction', this.modelName);
-    return this.extractor;
+    const extractor = await transformers.pipeline('feature-extraction', this.modelName);
+    this.extractor = extractor;
+    return extractor;
   }
 }
