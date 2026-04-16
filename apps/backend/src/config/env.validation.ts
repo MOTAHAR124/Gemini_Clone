@@ -12,7 +12,7 @@ export const validationSchema = Joi.object({
   GEMINI_API_KEY: Joi.string().required(),
   GEMINI_MODEL: Joi.string().default('gemini-2.5-flash'),
   QDRANT_URL: Joi.string().uri().required(),
-  QDRANT_API_KEY: Joi.string().required(),
+  QDRANT_API_KEY: Joi.string().allow('').optional(),
   QDRANT_COLLECTION: Joi.string().default('rag_chunks'),
   EMBEDDING_MODEL: Joi.string().default('Xenova/all-MiniLM-L6-v2'),
   MAX_HISTORY_MESSAGES: Joi.number().integer().min(4).max(100).default(24),
