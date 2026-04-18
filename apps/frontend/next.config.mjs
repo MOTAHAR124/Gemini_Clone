@@ -2,6 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    localPatterns: [
+      {
+        pathname: '/api/avatar',
+      },
+    ],
     remotePatterns: [
       {
         protocol: 'https',
