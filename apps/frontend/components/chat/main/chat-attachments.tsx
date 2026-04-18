@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { File, FileText, Image as ImageIcon, X } from 'lucide-react';
+import Image from 'next/image';
 
 export interface UploadPreview {
   id: string;
@@ -36,7 +37,14 @@ export function ChatAttachments({ files, compact, onRemove }: ChatAttachmentsPro
       {files.map((file) => (
         <div key={file.id} className="flex max-w-xs items-center gap-2 rounded-lg bg-[#202124] p-2">
           {file.preview ? (
-            <img src={file.preview} alt={file.name} className="h-8 w-8 rounded object-cover" />
+            <Image
+              src={file.preview}
+              alt={file.name}
+              width={32}
+              height={32}
+              unoptimized
+              className="h-8 w-8 rounded object-cover"
+            />
           ) : file.type.startsWith('image/') ? (
             <ImageIcon size={16} className="text-blue-300" />
           ) : file.type.includes('text') || file.type.includes('document') ? (

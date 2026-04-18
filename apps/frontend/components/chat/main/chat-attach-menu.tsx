@@ -1,4 +1,4 @@
-import { BookOpen, Code, FolderOpen, Image, Paperclip, Plus } from 'lucide-react';
+import { BookOpen, Code, FolderOpen, Image as ImageIcon, Paperclip, Plus } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface ChatAttachMenuProps {
@@ -85,7 +85,7 @@ export function ChatAttachMenu({
             onClick={() => runAttachAction(onAddPhotos)}
             className="mt-1 flex w-full items-center gap-3 rounded-2xl px-3 py-2 text-left text-gray-100 transition hover:bg-white/10"
           >
-            <Image className="h-4 w-4 text-gray-300" />
+            <ImageIcon className="h-4 w-4 text-gray-300" />
             <span className="text-sm font-medium">Photos</span>
           </button>
           <button

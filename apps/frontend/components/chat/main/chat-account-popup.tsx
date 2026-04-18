@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { ArrowRightFromLine, Camera, ChevronDown, ChevronUp, Plus, X } from 'lucide-react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { useAuth } from '@/components/ui/auth-provider';
@@ -120,9 +121,11 @@ export function ChatAccountPopup({ user, isOpen, onClose }: ChatAccountPopupProp
             <div className="grid h-24 w-24 place-items-center rounded-full bg-[conic-gradient(#ef4444_0deg_90deg,#3b82f6_90deg_180deg,#22c55e_180deg_270deg,#eab308_270deg_360deg)] p-0.75">
               <div className="grid h-full w-full place-items-center overflow-hidden rounded-full bg-[#111317]">
                 {canShowImage(user?.avatarUrl) ? (
-                  <img
-                    src={getAvatarImageSrc(user?.avatarUrl)}
+                  <Image
+                    src={getAvatarImageSrc(user?.avatarUrl)!}
                     alt={user?.name || 'User avatar'}
+                    width={96}
+                    height={96}
                     className="h-full w-full object-cover"
                     onError={() => markImageFailed(user?.avatarUrl)}
                   />
@@ -164,9 +167,11 @@ export function ChatAccountPopup({ user, isOpen, onClose }: ChatAccountPopupProp
                 ? otherAccounts.slice(0, 2).map((account, index) =>
                     canShowImage(account.avatarUrl) ? (
                       <span key={account.email} className="h-8 w-8 overflow-hidden rounded-full">
-                        <img
-                          src={getAvatarImageSrc(account.avatarUrl)}
+                        <Image
+                          src={getAvatarImageSrc(account.avatarUrl)!}
                           alt={account.name || 'Account avatar'}
+                          width={32}
+                          height={32}
                           className="h-full w-full object-cover"
                           onError={() => markImageFailed(account.avatarUrl)}
                         />
@@ -201,9 +206,11 @@ export function ChatAccountPopup({ user, isOpen, onClose }: ChatAccountPopupProp
                 >
                   {canShowImage(account.avatarUrl) ? (
                     <span className="h-8 w-8 overflow-hidden rounded-full">
-                      <img
-                        src={getAvatarImageSrc(account.avatarUrl)}
+                      <Image
+                        src={getAvatarImageSrc(account.avatarUrl)!}
                         alt={account.name || 'Account avatar'}
+                        width={32}
+                        height={32}
                         className="h-full w-full object-cover"
                         onError={() => markImageFailed(account.avatarUrl)}
                       />

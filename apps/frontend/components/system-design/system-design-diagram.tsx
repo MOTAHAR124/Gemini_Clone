@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const HIGH_LEVEL_DIAGRAM = `flowchart LR
   U[User Browser] --> FE[Next.js Frontend\\nApp Router UI]
   FE --> AV[/api/avatar proxy route/]
@@ -161,31 +163,37 @@ export function SystemDesignDiagram() {
         <h2 className="text-xl font-semibold">Visual Diagrams</h2>
         <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white p-3">
           <figcaption className="px-1 pb-3 text-sm font-medium text-[#1f2737]">1. High-Level Architecture</figcaption>
-          <img
+          <Image
             src={toMermaidImageUrl(HIGH_LEVEL_DIAGRAM)}
             alt="High-level system design diagram"
+            width={1600}
+            height={900}
+            unoptimized
             className="h-auto w-full"
-            loading="lazy"
           />
         </figure>
 
         <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white p-3">
           <figcaption className="px-1 pb-3 text-sm font-medium text-[#1f2737]">2. Chat Streaming Sequence</figcaption>
-          <img
+          <Image
             src={toMermaidImageUrl(CHAT_STREAM_DIAGRAM)}
             alt="Chat streaming sequence diagram"
+            width={1600}
+            height={900}
+            unoptimized
             className="h-auto w-full"
-            loading="lazy"
           />
         </figure>
 
         <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white p-3">
           <figcaption className="px-1 pb-3 text-sm font-medium text-[#1f2737]">3. Production Deployment Topology</figcaption>
-          <img
+          <Image
             src={toMermaidImageUrl(DEPLOYMENT_DIAGRAM)}
             alt="Deployment topology diagram with Vercel, Render, MongoDB Atlas, and Qdrant Cloud"
+            width={1600}
+            height={900}
+            unoptimized
             className="h-auto w-full"
-            loading="lazy"
           />
         </figure>
       </section>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { CircleUserRound } from 'lucide-react';
+import Image from 'next/image';
 
 import { ChatAccountPopup } from './chat-account-popup';
 import { getAvatarImageSrc } from '@/lib/avatar';
@@ -42,10 +43,12 @@ export function ChatMainHeader({ user, initials }: ChatMainHeaderProps) {
             <div className="grid h-full w-full rotate-30 place-items-center rounded-full bg-[#0f1114] p-0.5">
               <div className="grid h-full w-full place-items-center overflow-hidden rounded-full bg-[#2a2b2d] text-xs font-semibold text-gray-100">
                 {avatarSrc && !avatarFailed ? (
-                  <img
+                  <Image
                     key={`${avatarSrc}-${profileOpen ? 'open' : 'closed'}`}
                     src={avatarSrc}
                     alt={user?.name || 'User avatar'}
+                    width={40}
+                    height={40}
                     className="h-full w-full object-cover"
                     onError={() => setAvatarFailed(true)}
                   />
