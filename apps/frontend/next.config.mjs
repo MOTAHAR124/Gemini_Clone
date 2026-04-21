@@ -6,6 +6,9 @@ const nextConfig = {
       {
         pathname: '/api/avatar',
       },
+      {
+        pathname: '/login-v1/**',
+      },
     ],
     remotePatterns: [
       {

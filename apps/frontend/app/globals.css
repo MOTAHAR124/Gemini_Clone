@@ -68,3 +68,17 @@ input:disabled {
   background: rgba(56, 81, 96, 0.35);
   border-radius: 999px;
 }
+
+@keyframes auth-illustration-float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
