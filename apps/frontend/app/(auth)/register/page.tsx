@@ -69,7 +69,7 @@ export default function RegisterPage() {
       <AuthIllustration alt="Register illustration" />
 
         <form onSubmit={onSubmit} className="w-full max-w-90 flex-1">
-          <h1 className="text-center text-3xl font-bold text-zinc-800">Create your Account</h1>
+          <h1 className="text-center text-3xl font-bold text-zinc-800">Gemini-Clone</h1>
 
           <label className="mt-10 block">
             <span className="sr-only">Full name</span>

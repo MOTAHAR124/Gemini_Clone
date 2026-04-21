@@ -68,7 +68,7 @@ export default function LoginPage() {
       <AuthIllustration alt="Login illustration" />
 
       <form onSubmit={onSubmit} className="w-full max-w-90 flex-1">
-        <h1 className="text-center text-3xl font-bold text-zinc-800">Member Login</h1>
+        <h1 className="text-center text-3xl font-bold text-zinc-800">Gemini-Clone</h1>
 
           <label className="mt-10 block">
             <span className="sr-only">Email</span>
